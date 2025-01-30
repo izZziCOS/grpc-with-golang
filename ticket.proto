@@ -1,0 +1,27 @@
+syntax = "proto3";
+option go_package = "github.com/izzzicos/grpc-with-golang/ticketing";
+
+message Client {
+    string name = 1;
+    string lastName = 2;
+}
+
+message Doctor {
+    string name = 1;
+    string lastName = 2;
+    string service = 3;
+}
+
+message CreateRequest {
+    int64 ticketNumber = 1;
+    Client client = 2;
+}
+
+message CreateResponse {
+    Doctor doctor = 1;
+    int64 officeNumber = 2;
+}
+
+service Ticket {
+    rpc Create(CreateRequest) returns (CreateResponse);
+}
